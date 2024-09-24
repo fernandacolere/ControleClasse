@@ -1,9 +1,9 @@
 import util
 
-disciplinas_json = "arquivo_disciplina.json"
+arquivo_json = "arquivo_disciplina.json"
 
 def incluir():
-    lista = util.ler_arquivo(disciplinas_json)
+    lista = util.ler_arquivo(arquivo_json)
 
     codigo = int(input("Por favor, digite o código da disciplina: "))
     nome = input("Por favor, digite o nome da disciplina: ")
@@ -14,10 +14,10 @@ def incluir():
 
     # Adicionando a discplina na lista
     lista.append(dados)
-    util.salvar_arquivo(lista, disciplinas_json)
+    util.salvar_arquivo(lista, arquivo_json)
 
 def listar():
-    lista = util.ler_arquivo(disciplinas_json)
+    lista = util.ler_arquivo(arquivo_json)
 
     if len(lista) <= 0:
         print("Não há disciplinas cadastradas\r\n")
@@ -27,7 +27,7 @@ def listar():
         print(item)
 
 def atualizar():
-    lista = util.ler_arquivo(disciplinas_json)
+    lista = util.ler_arquivo(arquivo_json)
 
     codigo = int(input("Digite o código que deseja editar: "))
     item_atualizar = None
@@ -42,13 +42,13 @@ def atualizar():
     else:
         item_atualizar["codigo"] = int(input("Digite o novo código: "))
         item_atualizar["nome"] = input("Digite o novo nome: ")
-        util.salvar_arquivo(lista, disciplinas_json)
+        util.salvar_arquivo(lista, arquivo_json)
 
     for item in lista:
         print(item)
 
 def excluir():
-    lista = util.ler_arquivo(disciplinas_json)
+    lista = util.ler_arquivo(arquivo_json)
 
     codigo = int(input("Digite o código que deseja excluir: "))
     item_removido = None
@@ -63,4 +63,4 @@ def excluir():
     else:
         lista.remove(item)
         print(f"A disciplina {codigo} foi removida. ")
-        util.salvar_arquivo(lista, disciplinas_json)
+        util.salvar_arquivo(lista, arquivo_json)
